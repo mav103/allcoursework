@@ -1,0 +1,58 @@
+=breadcrumb_tag do
+  %li.active
+    Амбулаторные периоды
+  %li
+    Больница
+
+%h1= t('app.surveys.index')
+
+- if is_admin?
+  = link_to new_survey_path, class: 'btn btn-success' do
+    = fa_icon :plus
+    = t('buttons.new.card')
+.table-responsive
+  %table.table.table-hover.table-striped.center
+    %caption
+    %thead
+      %tr
+        %th= Survey.human_attribute_name(:card)
+        %th= Survey.human_attribute_name(:result)
+        %th= Survey.human_attribute_name(:ward)
+        %th= Survey.human_attribute_name(:cause)
+        %th= Survey.human_attribute_name(:entered)
+        %th= Survey.human_attribute_name(:ended)
+        %th= Survey.human_attribute_name(:epicrisis)
+        %th.p50
+        %th.p50
+        %th.p50
+
+    %tbody
+
+      - @surveys.each do |survey|
+        %tr
+          %td{:data => {:label => (Survey.human_attribute_name(:card_id))}}
+            = survey.card.cart_number
+          %td{:data => {:label => (Survey.human_attribute_name(:result_id))}}
+            = survey.result.title
+          %td{:data => {:label => (Survey.human_attribute_name(:ward_id))}}
+            = survey.ward.number
+          %td{:data => {:label => (Survey.human_attribute_name(:cause))}}
+            = survey.cause
+          %td{:data => {:label => (Survey.human_attribute_name(:entered))}}
+            = survey.entered
+          %td{:data => {:label => (Survey.human_attribute_name(:ended))}}
+            = survey.ended
+          %td{:data => {:label => (Survey.human_attribute_name(:epicrisis))}}
+            = survey.epicrisis
+            
+          %td.right
+            = link_to survey, class: 'btn btn-success' do
+              = fa_icon :eye
+          - if is_admin?
+            %td.right
+              = link_to edit_survey_path(survey), class: 'btn btn-info' do
+                = fa_icon :edit
+          - if is_admin?
+            %td.right
+              = link_to survey, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+                = fa_icon :times

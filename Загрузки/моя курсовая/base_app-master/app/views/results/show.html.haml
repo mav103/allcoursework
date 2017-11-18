@@ -1,0 +1,25 @@
+=breadcrumb_tag do
+  %li.active
+    = @result.id
+  %li
+    = link_to 'Результаты', results_path
+  %li
+    Больница
+
+%h1= @result_id
+
+%dl
+  %dt= Result.human_attribute_name(:conclusion)
+  %dd= @result.conclusion
+  %dt= Result.human_attribute_name(:title)
+  %dd= @result.title
+  %dt= Result.human_attribute_name(:rdate)
+  %dd= @result.rdate
+  %dt= Result.human_attribute_name(:appointment)
+  %dd= @result.appointment
+  %dt= Result.human_attribute_name(:causes)
+  %dd= @result.causes
+  %dt= Result.human_attribute_name(:first_inspection)
+  %dd= @result.first_inspection
+  %dt= Result.human_attribute_name(:results)
+  %dd= @result.results

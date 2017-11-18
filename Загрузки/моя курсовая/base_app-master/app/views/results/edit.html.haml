@@ -1,0 +1,14 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.results.edit')
+  %li
+    = link_to(@result.title, @result)
+  %li
+    = link_to 'Палаты', results_path
+  %li
+    Больница
+
+.page-header
+  %h1= t('headers.results.edit')
+
+= render 'form'

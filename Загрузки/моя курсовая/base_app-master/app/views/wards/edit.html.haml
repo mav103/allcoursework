@@ -1,0 +1,14 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.wards.edit')
+  %li
+    = link_to(@ward.number, @ward)
+  %li
+    = link_to 'Палаты', wards_path
+  %li
+    Больница
+
+.page-header
+  %h1= t('headers.wards.edit')
+
+= render 'form'

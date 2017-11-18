@@ -1,0 +1,57 @@
+=breadcrumb_tag do
+  %li.active
+    Карты
+  %li
+    Больница
+
+%h1= t('app.cards.index')
+- if is_admin?
+  = link_to new_card_path, class: 'btn btn-success' do
+    = fa_icon :plus
+    = t('buttons.new.card')
+%table.table.table-hover.table-striped.center
+  %caption
+  %thead
+    %tr
+      %th= Card.human_attribute_name(:second_name)
+      %th= Card.human_attribute_name(:first_name)
+      %th= Card.human_attribute_name(:last_name)
+      %th= Card.human_attribute_name(:passport)
+      %th= Card.human_attribute_name(:insurance)
+      %th= Card.human_attribute_name(:residence)
+      %th= Card.human_attribute_name(:allergy)
+      %th= Card.human_attribute_name(:cart_number)
+      %th.p50
+      %th.p50
+      %th.p50
+
+  %tbody
+    - @cards.each do |card|
+      %tr
+        %td{:data => {:label => (Card.human_attribute_name(:second_name))}}
+          = card.second_name
+        %td{:data => {:label => (Card.human_attribute_name(:first_name))}}
+          = card.first_name
+        %td{:data => {:label => (Card.human_attribute_name(:last_name))}}
+          = card.last_name
+        %td{:data => {:label => (Card.human_attribute_name(:passport))}}
+          = card.passport
+        %td{:data => {:label => (Card.human_attribute_name(:residence))}}
+          = card.residence
+        %td{:data => {:label => (Card.human_attribute_name(:created))}}
+          = card.created
+        %td{:data => {:label => (Card.human_attribute_name(:allergy))}}
+          = card.allergy
+        %td{:data => {:label => (Card.human_attribute_name(:cart_number))}}
+          = card.cart_number
+        %td.right
+          = link_to card, class: 'btn btn-success' do
+            = fa_icon :eye
+        - if is_admin?
+          %td.right
+            = link_to edit_card_path(card), class: 'btn btn-info' do
+              = fa_icon :edit
+        - if is_admin?
+          %td.right
+            = link_to card, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+              = fa_icon :times

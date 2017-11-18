@@ -1,0 +1,14 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.surveys.edit')
+  %li
+    = link_to(@survey.epicrisis, @survey)
+  %li
+    = link_to 'Амбулаторные периоды', surveys_path
+  %li
+    Больница
+
+.page-header
+  %h1= t('headers.surveys.edit')
+
+= render 'form'

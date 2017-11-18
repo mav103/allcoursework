@@ -1,0 +1,46 @@
+=breadcrumb_tag do
+  %li.active
+    Результаты обследования
+  %li
+    Больница
+
+%h1= t('app.results.index')
+- if is_admin?
+  = link_to new_result_path, class: 'btn btn-success' do
+    = fa_icon :plus
+    = t('buttons.new.result')
+  %table.table.table-hover.table-striped.center
+    %caption
+    %thead
+      %tr
+        %th= Result.human_attribute_name(:conclusion)
+        %th= Result.human_attribute_name(:title)
+        %th= Result.human_attribute_name(:rdate)
+        %th= Result.human_attribute_name(:appointment)
+        %th= Result.human_attribute_name(:causes)
+        %th= Result.human_attribute_name(:first_inspection)
+        %th= Result.human_attribute_name(:results)
+        %th.p50
+        %th.p50
+        %th.p50
+
+    %tbody
+      - @results.each do |result|
+        %tr
+          %td= result.conclusion
+          %td= result.title
+          %td= result.rdate
+          %td= result.appointment
+          %td= result.causes
+          %td= result.first_inspection
+          %td= result.results
+          %td
+            = link_to result, class: 'btn btn-success' do
+              = fa_icon :eye
+          - if is_admin?
+            %td
+              = link_to edit_result_path(result), class: 'btn btn-info' do
+                = fa_icon :edit
+            %td
+              = link_to result, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+                = fa_icon :times

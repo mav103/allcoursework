@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.surveys.edit')
+  %li
+    = link_to 'Амбулаторный периоды', surveys_path
+  %li
+    Больница
+    
+.page-header
+  %h1= t('headers.surveys.new')
+= render 'form'

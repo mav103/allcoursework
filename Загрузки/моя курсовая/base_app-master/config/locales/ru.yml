@@ -1,0 +1,192 @@
+ru:
+  app:
+    name: Базовое приложение
+    company:
+      short_name: МПУ
+      department: Кафедра
+    users:
+      index: Список пользователей
+      new-button: Новый пользователь
+      edit: Редактирование пользователя
+      new: Создание пользователя
+    roles:
+      index: Список возможных ролей пользователей
+      new-button: Новая роль
+      edit: Редактирование роли
+      new: Создание роли
+    departments:
+      index: Список департаментов
+      new-button: Новый департамент
+      edit: Редактирование департамента
+      new: Создание департамента
+    cards:
+      index: Список карт
+      new-button: Новая карта
+      edit: Редактирование карты
+      new: Создание карты
+    wards:
+      index: Список палат
+      new-button: Новая палата
+      edit: Редактирование палаты
+      new: Создание палаты
+    surveys:
+      index: Список амбулаторных периодов
+      new-button: Новый период
+      edit: Редактирование периода
+      new: Создание периода
+    results:
+      index: Список результатов обследования
+      new-button: Новый результат обследования
+      edit: Редактирование результат обследования
+      new: Создание результата обследования
+  helpers:
+    submit:
+      create: Сохранить
+      submit: Сохранить
+      update: Сохранить
+    sure: Действительно удалить?
+  buttons:
+    edit: Редактировать
+    destroy: Удалить
+    show: Показать
+    save: Сохранить
+    back: Назад
+    confirm:
+      user: Действительно удалить пользователя?
+      role: Действительно удалить роль?
+      result: Действительно удалить результат?
+      ward: Действительно удалить палату?
+      card: Действительно удалить карту?
+      survey: Действительно удалить амбулаторный период?
+    new:
+      user: Новый пользователь
+      role: Новая роль
+      card: Новая карта
+      ward: Новая палата
+      survey: Новый амбулаторный период
+      result: Новый результат
+    search:
+      card: Найти пациентов
+  headers:
+    users:
+      edit: Редактирование пользователя
+      new: Новый пользователь
+      index: Список пользователей
+    roles:
+      index: Список возможных ролей пользователей
+      edit: Редактирование роли
+      new: Новая роль
+    cards:
+      index: Список карт
+      new: Новая карта
+      edit: Редактирование карты
+      search: Поиск карты
+      found: Найденные пациенты
+      ward: Поиск по палатам
+      card: Поиск по пациентам
+      result: Поиск по результатам
+      survey: Поиск по амбулаторным периодам
+    wards:
+      index: Список палат
+      new: Новая палата
+      edit: Редактирование палаты
+    surveys:
+      index: Список амбулаторных периодов
+      new: Новый амбулаторный период
+      edit: Редактирование амбулаторного периода
+    results:
+      index: Список результатов
+      new: Новый результат
+      edit: Редактирование результата
+
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
+  activerecord:
+    models:
+      user: Пользователь
+      departments: Отдел
+      cards: Карта
+      wards: Палата
+      surveys: Амбулаторный период
+      results: Результат
+    attributes:
+      user:
+        email: Пользовательское имя/электронная почта
+        birthday: Дата рождения
+      address: Адрес
+      card: Карта пациента
+      ward: Больничная палата
+      survey: Список амбулаторных периодов пребывания пациентов в больнице.
+      result: Результаты обследования
+    attributes:
+      user:
+        email: Пользовательское имя/электронная почта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        reset_password_email_sent_at: Дата отправления письма для смены пароля
+        activation_state: Статус активации
+        activation_token_expires_at: Дата прекращения действия токена активации
+        last_login_at: Время последнего входа в систему
+        role_users: Роли
+      role:
+        name: Обозначение
+        info: Краткое название
+        full_info: Описание
+      # nested_start
+      role_user: &role_users
+      # nested_finish
+        role: Роль
+        role_id: Роль
+        data: Параметры
+      # nested_start
+      user/role_users:
+        <<: *role_users
+      # nested_finish
+      card:
+        second_name: Отчество
+        first_name: Имя
+        last_name: Фамилия
+        passport: Паспорт
+        insurance: Страховка
+        residence: Вариант лечения
+        created: Дата создания
+        allergy: Аллергии
+        cart_number: Номер карты
+        ward: Палата
+      ward:
+        floor: Этаж
+        department: Отделение
+        capacity: Количество мест
+        number: Номер
+        num_of_pacients: Количество человек
+      survey:
+        result_id: Результат
+        card_id: Пациент
+        ward_id: Палата
+        card: Пациент
+        ward: Палата
+        result: Результат
+        cause: Причина
+        entered: Дата поступления
+        ended: Дата выписки
+        epicrisis: Эпикриз
+      result:
+        card_id: Пациент
+        conclusion: Заключение
+        title: Название обследование
+        rdate: Дата проведение
+        appointment: Описание
+        causes: Причины проведения
+        first_inspection: Первый осмотр
+        results: Результат
+    errors:
+      models:
+        person:
+          attributes:
+            snils:
+              check_sum: имеет неправильную контрольную сумму

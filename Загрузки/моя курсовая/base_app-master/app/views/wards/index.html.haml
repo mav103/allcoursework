@@ -1,0 +1,49 @@
+=breadcrumb_tag do
+  %li.active
+    Палаты
+  %li
+    Больница
+
+%h1= t('app.wards.index')
+- if is_admin?
+  = link_to new_ward_path, class: 'btn btn-success' do
+    = fa_icon :plus
+    = t('buttons.new.ward')
+.table-responsive
+  %table.table.table-hover.table-striped.center
+    %caption
+    %thead
+      %tr
+        %th= Ward.human_attribute_name(:department)
+        %th= Ward.human_attribute_name(:floor)
+        %th= Ward.human_attribute_name(:capacity)
+        %th= Ward.human_attribute_name(:number)
+        %th= Ward.human_attribute_name(:num_of_pacients)
+        %th.p50
+        %th.p50
+        %th.p50
+
+    %tbody
+      - @wards.each do |ward|
+        %tr
+          %td{:data => {:label => (Ward.human_attribute_name(:department))}}
+            = ward.department
+          %td{:data => {:label => (Ward.human_attribute_name(:floor))}}
+            = ward.floor
+          %td{:data => {:label => (Ward.human_attribute_name(:capacity))}}
+            = ward.capacity
+          %td{:data => {:label => (Ward.human_attribute_name(:number))}}
+            = ward.number
+          %td{:data => {:label => (Ward.human_attribute_name(:num_of_pacients))}}
+            = ward.num_of_pacients
+          %td.right
+            = link_to ward, class: 'btn btn-success' do
+              = fa_icon :eye
+          - if is_admin?
+            %td.right
+              = link_to edit_ward_path(ward), class: 'btn btn-info' do
+                = fa_icon :edit
+          - if is_admin?
+            %td.right
+              = link_to ward, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+                = fa_icon :times

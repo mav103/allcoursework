@@ -1,0 +1,15 @@
+if ('<%= @ward.nil? %>' == 'true')
+  $('#survey_ward_attributes_id').val('')
+  $('#survey_ward_attributes_department').val('')
+  $('#survey_ward_attributes_floor').val('')
+  $('#survey_ward_attributes_capacity').val('')
+  $('#survey_ward_attributes_number').val('')
+  $('#survey_ward_attributes_num_of_pacients').val('')
+
+else
+  $('#survey_ward_attributes_id').val('<%= @ward.try(:id) %>')
+  $('#survey_ward_attributes_department').val('<%= @ward.try(:department) %>')
+  $('#survey_ward_attributes_floor').val('<%= @ward.try(:floor) %>')
+  $('#survey_ward_attributes_capacity').val('<%= @ward.try(:capacity) %>')
+  $('#survey_ward_attributes_number').val('<%= @ward.try(:number) %>')
+  $('#survey_ward_attributes_num_of_pacients').val('<%= @ward.try(:num_of_pacients) %>')

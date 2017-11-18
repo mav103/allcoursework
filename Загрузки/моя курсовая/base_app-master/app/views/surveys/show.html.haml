@@ -1,0 +1,25 @@
+=breadcrumb_tag do
+  %li.active
+    = @survey.id
+  %li
+    = link_to 'Амбулаторные периоды', surveys_path
+  %li
+    Больница
+
+%h1= @Survey_id
+
+%dl
+  %dt= Survey.human_attribute_name(:card)
+  %dd= @survey.card_id
+  %dt= Survey.human_attribute_name(:result)
+  %dd= @survey.result_id
+  %dt= Survey.human_attribute_name(:ward)
+  %dd= @survey.ward_id
+  %dt= Survey.human_attribute_name(:cause)
+  %dd= @survey.cause
+  %dt= Survey.human_attribute_name(:entered)
+  %dd= @survey.entered
+  %dt= Survey.human_attribute_name(:ended)
+  %dd= @survey.ended
+  %dt= Survey.human_attribute_name(:epicrisis)
+  %dd= @survey.epicrisis

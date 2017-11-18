@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  second_name: MyString
+  first_name: MyString
+  last_name: MyString
+  passport: MyString
+  insurance: 1
+  residence: MyString
+  created: 2017-05-12
+  allergy: MyString
+  cart_number: 1
+  address_id: 
+
+two:
+  second_name: MyString
+  first_name: MyString
+  last_name: MyString
+  passport: MyString
+  insurance: 1
+  residence: MyString
+  created: 2017-05-12
+  allergy: MyString
+  cart_number: 1
+  address_id: 

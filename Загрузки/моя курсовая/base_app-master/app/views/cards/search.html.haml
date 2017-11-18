@@ -1,0 +1,166 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.cards.search')
+  %li
+    =link_to 'Пациенты', cards_path
+  %li
+    Больница
+
+.page-header
+  %h1= t('headers.cards.search')
+
+= form_tag search_cards_path(), method: :get do
+  .well
+    %h3= t('headers.cards.card')
+    .row
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:second_name)
+        =text_field_tag 'search[second_name]', params['search']['second_name'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:first_name)
+        =text_field_tag 'search[first_name]', params['search']['first_name'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:last_name)
+        =text_field_tag 'search[last_name]', params['search']['last_name'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:passport)
+        =number_field_tag 'search[passport]', params['search']['passport'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:insurance)
+        =text_field_tag 'search[insurance]', params['search']['insurance'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:residence)
+        =text_field_tag 'search[residence]', params['search']['residence'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:created)
+        =date_field_tag 'search[created]', params['search']['created'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:allergy)
+        =text_field_tag 'search[allergy]', params['search']['allergy'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Card.human_attribute_name(:cart_number)
+        =number_field_tag 'search[cart_number]', params['search']['cart_number'],class: 'form-control'
+
+    %h3= t('headers.cards.ward')
+    .row
+      .col-md-4
+        .form-group
+        =Ward.human_attribute_name(:department)
+        =text_field_tag 'search[department]', params['search']['department'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Ward.human_attribute_name(:floor)
+        =number_field_tag 'search[floor]', params['search']['floor'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Ward.human_attribute_name(:capacity)
+        =number_field_tag 'search[capacity]', params['search']['capacity'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Ward.human_attribute_name(:number)
+        =number_field_tag 'search[number]', params['search']['number'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Ward.human_attribute_name(:num_of_pacients)
+        =number_field_tag 'search[num_of_pacients]', params['search']['num_of_pacients'],class: 'form-control'
+
+    %h3= t('headers.cards.result')
+    .row
+      .col-md-4
+        .form-group
+        =Result.human_attribute_name(:conclusion)
+        =text_field_tag 'search[conclusion]', params['search']['conclusion'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Result.human_attribute_name(:title)
+        =text_field_tag 'search[title]', params['search']['title'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Result.human_attribute_name(:rdate)
+        =date_field_tag 'search[rdate]', params['search']['rdate'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Result.human_attribute_name(:appointment)
+        =text_field_tag 'search[appointment]', params['search']['appointment'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Result.human_attribute_name(:causes)
+        =text_field_tag 'search[causes]', params['search']['causes'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Result.human_attribute_name(:first_inspection)
+        =text_field_tag 'search[first_inspection]', params['search']['first_inspection'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Result.human_attribute_name(:results)
+        =text_field_tag 'search[results]', params['search']['results'],class: 'form-control'
+
+    %h3= t('headers.cards.survey')
+    .row
+      .col-md-4
+        .form-group
+        =Survey.human_attribute_name(:cause)
+        =text_field_tag 'search[cause]', params['search']['cause'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Survey.human_attribute_name(:entered)
+        =text_field_tag 'search[entered]', params['search']['entered'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Survey.human_attribute_name(:ended)
+        =date_field_tag 'search[ended]', params['search']['ended'],class: 'form-control'
+      .col-md-4
+        .form-group
+        =Survey.human_attribute_name(:epicrisis)
+        =text_field_tag 'search[epicrisis]', params['search']['epicrisis'],class: 'form-control'
+
+
+  .actions
+    =submit_tag t('buttons.search.card'), class: 'bnt btn-primary'
+.page-header
+  %h1= t('headers.cards.found') + ": " + @cards.size.to_s
+- if @cards.size > 0
+  %table.table.table-hover.table-striped.center
+    %caption
+    %thead
+      %tr
+        %th= Card.human_attribute_name(:second_name)
+        %th= Card.human_attribute_name(:first_name)
+        %th= Card.human_attribute_name(:last_name)
+        %th= Card.human_attribute_name(:passport)
+        %th= Card.human_attribute_name(:insurance)
+        %th= Card.human_attribute_name(:residence)
+        %th= Card.human_attribute_name(:allergy)
+        %th= Card.human_attribute_name(:cart_number)
+        %th.p50
+        %th.p50
+        %th.p50
+
+    %tbody
+      - @cards.each do |card|
+        %tr
+          %td{:data => {:label => (Card.human_attribute_name(:second_name))}}
+            = card.second_name
+          %td{:data => {:label => (Card.human_attribute_name(:first_name))}}
+            = card.first_name
+          %td{:data => {:label => (Card.human_attribute_name(:last_name))}}
+            = card.last_name
+          %td{:data => {:label => (Card.human_attribute_name(:passport))}}
+            = card.passport
+          %td{:data => {:label => (Card.human_attribute_name(:residence))}}
+            = card.residence
+          %td{:data => {:label => (Card.human_attribute_name(:created))}}
+            = card.created
+          %td{:data => {:label => (Card.human_attribute_name(:allergy))}}
+            = card.allergy
+          %td{:data => {:label => (Card.human_attribute_name(:cart_number))}}
+            = card.cart_number

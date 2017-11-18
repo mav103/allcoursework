@@ -1,0 +1,7 @@
+.form-group
+  .row
+    .col-md-6
+      = f.label :'Название департамента'
+      = f.text_field :name, class: 'form-control'
+      = f.error_messages_for(:name)
+      = f.hidden_field :id ,class: 'form-control'

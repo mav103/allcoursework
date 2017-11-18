@@ -1,0 +1,60 @@
+.form-group
+  .row
+    .col-md-6
+      .form-group
+        = f.label :second_name
+        = f.text_field :second_name, class: 'form-control'
+        = f.error_messages_for(:second_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+        = f.error_messages_for(:first_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+        = f.error_messages_for(:last_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :passport
+        = f.text_field :passport, class: 'form-control'
+        = f.error_messages_for(:passport)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :insurance
+        = f.number_field :insurance, class: 'form-control'
+        = f.error_messages_for(:insurance)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :residence
+        = f.text_field :residence, class: 'form-control'
+        = f.error_messages_for(:residence)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :created
+        .input-group.date.datepicker
+          = f.text_field(:created, value: lnil(f.object.created),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:created)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :allergy
+        = f.text_field :allergy, class: 'form-control'
+        = f.error_messages_for(:allergy)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :cart_number
+        = f.number_field :cart_number, class: 'form-control'
+        = f.error_messages_for(:cart_number)
+        = f.hidden_field :id ,class: 'form-control'

@@ -1,0 +1,77 @@
+= form_for @survey do |f|
+  = error_messages_for @survey
+  .row
+    .col-md-6
+      .form-group
+        = f.label :cause
+        = f.text_field :cause
+  .row
+    .col-md-6
+      .form-group
+        = f.label :entered
+        .input-group.date.datepicker
+          = f.text_field(:entered, value: lnil(f.object.entered),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:entered)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :ended
+        .input-group.date.datepicker
+          = f.text_field(:ended, value: lnil(f.object.ended),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:ended)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :epicrisis
+        = f.text_field :epicrisis
+
+  %h3= "Выберите результат или создайте новый"
+  .row
+    .col-md-6
+      = f.label :result_id
+      = f.collection_select :result_id, Result.all, :id, :title,
+      {include_blank: true}, {id: 'select_existing_result', class: 'form-control'}
+      = f.error_messages_for(:result_id)
+      = f.fields_for :result, f.object.result_id || f.object.build_result do |result|
+        = render 'result_fields', f: result
+
+  %h3= "Выберите карту больного или создайте новую"
+  .row
+    .col-md-6
+      = f.label :card_id
+      = f.collection_select :card_id, Card.all, :id, :cart_number,
+      {include_blank: true}, {id: 'select_existing_card', class: 'form-control'}
+      = f.error_messages_for(:card_id)
+      = f.fields_for :card, f.object.card_id || f.object.build_card do |card|
+        = render 'card_fields', f: card
+
+  %h3= "Выберите палату или создайте новую"
+  .row
+    .col-md-6
+      = f.label :ward_id
+      = f.collection_select :ward_id, Ward.all, :id, :number,
+      {include_blank: true}, {id: 'select_existing_ward', class: 'form-control'}
+      = f.error_messages_for(:ward_id)
+      = f.fields_for :ward, f.object.ward_id || f.object.build_ward do |ward|
+        = render 'ward_fields', f: ward
+
+  - if params[:action] == 'edit'
+    - if !f.object.new_record?
+      = link_to @survey.ward,
+      :method => :delete,
+      :data => { :confirm => t('buttons.confirm.result') },
+      class: 'btn btn-danger' do
+        = fa_icon :times
+        = t('buttons.destroy')
+  %p
+  - if is_admin?
+    .form-actions.bottom20
+      = f.submit nil, class: 'btn btn-primary'
+  - else
+    %h3 Вносить изменения(регистрировать новые) может только администратор

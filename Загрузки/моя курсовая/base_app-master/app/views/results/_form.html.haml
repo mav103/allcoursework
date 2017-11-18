@@ -1,0 +1,55 @@
+= form_for @result do |f|
+
+  = error_messages_for @result
+  .row
+    .col-md-6
+      .form-group
+        = f.label :conclusion
+        = f.text_field :conclusion, class: 'form-control'
+        = f.error_messages_for(:conclusion)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: 'form-control'
+        = f.error_messages_for(:title)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :rdate
+        .input-group.date.datepicker
+          = f.text_field(:rdate, value: lnil(f.object.rdate),
+          class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:rdate)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :appointment
+        = f.text_field :appointment, class: 'form-control'
+        = f.error_messages_for(:appointment)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :causes
+        = f.text_field :causes, class: 'form-control'
+        = f.error_messages_for(:causes)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :first_inspection
+        = f.text_field :first_inspection, class: 'form-control'
+        = f.error_messages_for(:first_inspection)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :results
+        = f.text_field :results, class: 'form-control'
+        = f.error_messages_for(:results)
+
+  - if is_admin?
+    .form-actions.bottom20
+      = f.submit nil, class: 'btn btn-primary'
+  - else
+    %h3 Вносить изменения(регистрировать новые) может только администратор

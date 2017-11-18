@@ -1,0 +1,60 @@
+        %h3= "Палату"
+  = f.fields_for (:ward) do |df|
+    .field
+      = df.hidden_field :id
+    .row
+      .col-md-6
+        .form-group
+          = df.label :floor, "Этаж"
+          = df.text_field :floor, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :capacity, "Количество мест"
+          = df.text_field :capacity, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :number, "Номер палаты"
+          = df.text_field :number, class: 'form-control'
+
+        %h3= "Карту"
+  = f.fields_for (:card) do |df|
+    .field
+      = df.hidden_field :id
+    .row
+      .col-md-6
+        .form-group
+          = df.label :second_name, "Фамилия"
+          = df.text_field :second_name, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :first_name, "Имя"
+          = df.text_field :first_name, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :last_name, "Отчество"
+          = df.text_field :last_name, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :passport, "Паспорт"
+          = df.text_field :passport, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :insurance, "Страховой полис"
+          = df.text_field :insurance, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :residence, "Лечение (платное/бесплатное)"
+          = df.text_field :residence, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :created, "Дата создания карты"
+          = df.text_field :created, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :allergy, "Аллергия"
+          = df.text_field :allergy, class: 'form-control'
+      .col-md-6
+        .form-group
+          = df.label :cart_number, "Номер карты"
+          = df.text_field :cart_number, class: 'form-control'
+

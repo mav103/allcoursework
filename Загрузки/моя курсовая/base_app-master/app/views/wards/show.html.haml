@@ -1,0 +1,21 @@
+=breadcrumb_tag do
+  %li.active
+    = @ward.id
+  %li
+    = link_to 'Палаты', wards_path
+  %li
+    Больница
+
+%h1= @Ward_id
+
+%dl
+  %dt= Ward.human_attribute_name(:department)
+  %dt= @ward.department
+  %dt= Ward.human_attribute_name(:floor)
+  %dt= @ward.floor
+  %dt= Ward.human_attribute_name(:capacity)
+  %dt= @ward.capacity
+  %dt= Ward.human_attribute_name(:number)
+  %dt= @ward.number
+  %dt= Ward.human_attribute_name(:num_of_pacients)
+  %dt= @ward.num_of_pacients
